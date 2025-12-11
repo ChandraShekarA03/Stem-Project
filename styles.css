@@ -1,0 +1,173 @@
+/* Styles inspired by Harvard aesthetics and Christ University color scheme */
+.root, :root{
+  --primary:#ffffff; /* base white */
+  --secondary:#0b5ed7; /* strong academic blue */
+  --gold:#f0c040; /* tertiary gold */
+  --muted:#556;
+  --bg:#ffffff;
+  --max-width:1100px;
+}
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;line-height:1.6;color:#222;margin:0;background:var(--bg)}
+.container{max-width:var(--max-width);margin:0 auto;padding:2rem}
+.site-header{border-bottom:1px solid #eee;background:#fff;position:sticky;top:0;z-index:60}
+.header-inner{display:flex;align-items:center;justify-content:space-between}
+.brand h1{font-family:'Playfair Display',serif;margin:0;color:var(--secondary);font-weight:700}
+.nav a{margin-left:1.25rem;color:var(--muted);text-decoration:none;font-weight:600}
+.nav a:hover{color:var(--secondary)}
+
+.hero{position:relative;height:64vh;min-height:420px;display:flex;align-items:center}
+.slideshow{position:absolute;inset:0;overflow:hidden}
+.slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.02);transition:opacity 1s ease,transform 8s linear}
+.slide.active{opacity:0.35;transform:scale(1)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,94,215,0.18),rgba(0,0,0,0.12));backdrop-filter:blur(1px)}
+.hero-content{position:relative;color:#fff;padding:4rem 2rem}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,4rem);margin:0 0 .5rem;color:var(--secondary)}
+.hero-sub{max-width:54ch;color:#fff;margin:0 0 1rem}
+.btn{display:inline-block;padding:.75rem 1.1rem;border-radius:6px;text-decoration:none;font-weight:600}
+.btn.primary{background:transparent;color:var(--secondary);border:2px solid var(--gold)}
+.btn.primary:hover{background:var(--secondary);color:var(--primary)}
+
+/* Vision & Mission enhanced entry animations */
+@keyframes visionEnter{0%{transform:translateY(24px) rotateX(26deg) rotate(-12deg) scale(.82);opacity:0}60%{transform:translateY(-8px) rotate(6deg) scale(1.03);opacity:1}100%{transform:none}}
+@keyframes missionEnter{0%{transform:translateY(40px) rotate(30deg) scale(.6);opacity:0}70%{transform:translateY(-6px) rotate(-6deg) scale(1.02);opacity:1}100%{transform:none}}
+
+.animate-card.vision .card-inner{transform-origin:center;}
+.animate-card.vision.in .card-inner{animation:visionEnter .95s cubic-bezier(.2,.9,.28,1) forwards}
+.animate-card.mission .card-inner{transform-origin:center;}
+.animate-card.mission.in .card-inner{animation:missionEnter .95s cubic-bezier(.2,.9,.28,1) forwards}
+.animate-card .card-inner{transition:transform .35s ease;}
+.animate-card:hover .card-inner{transform:translateY(-6px) rotate(-1deg) scale(1.01)}
+
+.about{padding-top:3rem;padding-bottom:3rem}
+.about-intro h3{font-family:'Playfair Display',serif;color:var(--maroon);margin-top:0}
+.cards-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:1.25rem}
+.card{background:linear-gradient(135deg, #ffffff 0%, rgba(11,94,215,0.02) 100%);border-radius:10px;padding:1.5rem;box-shadow:0 8px 20px rgba(27,27,27,0.06);border:1.2px solid rgba(11,94,215,0.08);transition:transform .45s cubic-bezier(.2,.9,.3,1),box-shadow .45s ease,filter .35s ease,border-color .45s ease;position:relative;overflow:hidden}
+.card-inner h4{margin-top:0;color:var(--secondary)}
+
+.card.hovered, .card:hover{transform:translateY(-16px) rotate(-1.8deg) scale(1.12);box-shadow:0 54px 140px rgba(11,94,215,0.22), inset 0 0 30px rgba(240,192,64,0.14), 0 0 40px rgba(240,192,64,0.15);filter:brightness(1.08);border-color:rgba(240,192,64,0.5)}
+
+/* gold glow + ripple using pseudo elements (ripple origin follows CSS vars set by JS) */
+.card::after, .feature::after, .service-card::after{
+  content:"";
+  position:absolute;
+  left:-10%;
+  top:-10%;
+  width:120%;
+  height:120%;
+  border-radius:inherit;
+  background: radial-gradient(ellipse at center, rgba(240,192,64,0.18), rgba(240,192,64,0.06) 30%, transparent 45%);
+  opacity:0;
+  transform:scale(0.98);
+  transition:opacity .35s ease, transform .35s ease;
+  pointer-events:none;
+  z-index:0;
+}
+.card::before, .feature::before, .service-card::before{
+  content:"";
+  position:absolute;
+  width:20px;height:20px;border-radius:50%;
+  background: rgba(240,192,64,0.28);
+  left:var(--ripple-x,50%); top:var(--ripple-y,50%); transform:translate(-50%,-50%) scale(0);
+  opacity:0; z-index:0; pointer-events:none;
+}
+.card > .card-inner, .feature > * , .service-card > *{position:relative;z-index:2}
+.card:hover::after, .feature:hover::after, .service-card:hover::after{opacity:1;transform:scale(1.02)}
+.ripple::before{animation:ripple .9s ease-out}
+
+@keyframes ripple{from{transform:translate(-50%,-50%) scale(0.2);opacity:0.6}to{transform:translate(-50%,-50%) scale(8);opacity:0}}
+
+
+.animate-card{transform:translateY(18px);opacity:0}
+.animate-card.revealed, .reveal.in{opacity:1;transform:none}
+
+/* reveal variations */
+.reveal{opacity:0;transform:translateY(18px);transition:transform .7s cubic-bezier(.2,.9,.3,1),opacity .6s ease,filter .6s ease}
+.reveal.in{opacity:1;transform:none;filter:none}
+
+/* Sweep and spin animations */
+.sweep-left{transform:translateX(-30px) scale(.98);}
+.sweep-right{transform:translateX(30px) scale(.98);}
+.sweep-up{transform:translateY(30px) scale(.98);}
+.sweep-down{transform:translateY(-30px) scale(.98);}
+.spin-in{transform:rotate(-18deg) scale(.8);opacity:0}
+
+.reveal.in.sweep-left,.reveal.in.sweep-right,.reveal.in.sweep-up,.reveal.in.sweep-down,.reveal.in.spin-in{transform:none;opacity:1}
+
+/* Add a playful spin keyframe for elements that should spin into place */
+@keyframes spinEntry{from{transform:rotate(-160deg) scale(.3);opacity:0}to{transform:none;opacity:1}}
+.spin-in.in{animation:spinEntry .9s cubic-bezier(.2,.9,.3,1) forwards}
+
+@keyframes floatIn{from{opacity:0;transform:translateY(18px) translateZ(0)}to{opacity:1;transform:none}}
+.card-fade{opacity:0;transform:translateY(18px);}
+.card-fade.in{animation:floatIn .6s ease forwards}
+
+.section-alt{background:#f8fbff;padding:3rem 0}
+.section-lead{color:var(--muted);max-width:70ch}
+
+/* Centered, larger, animated gradient headings for key sections */
+#facilities, #services, #contact{
+  text-align:center;
+}
+
+#facilities h3, #services h3, #contact h3{
+  font-size:clamp(1.6rem,3.4vw,2.2rem);
+  margin-bottom:.6rem;
+  background: linear-gradient(90deg, var(--secondary), var(--gold), var(--secondary));
+  background-size:200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display:inline-block;
+  padding:0 .25rem;
+  animation:gradientShift 2.8s ease infinite, floatTitle 5s ease-in-out infinite;
+}
+
+#facilities .section-lead, #services .section-lead, #contact .section-lead{
+  margin:0 auto 1.25rem;max-width:68ch;font-size:1.05rem;text-align:center;color:var(--muted)
+}
+
+@keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes floatTitle{0%{transform:translateY(0)}50%{transform:translateY(-12px)}100%{transform:translateY(0)}}
+
+/* Center cards within grid for these sections */
+#facilities .grid, #services .grid{justify-items:center;align-items:start}
+#facilities .grid > *, #services .grid > *{width:100%;max-width:340px}
+
+.grid{display:grid;gap:1rem}
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.feature{background:linear-gradient(135deg, #ffffff 0%, rgba(11,94,215,0.015) 100%);padding:1.25rem;border-radius:10px;box-shadow:0 12px 34px rgba(0,0,0,0.06);text-align:left;transform-origin:center;transition:transform .45s cubic-bezier(.2,.9,.3,1),box-shadow .45s ease,filter .35s ease,border-color .45s ease;position:relative;overflow:hidden;border:1.2px solid rgba(11,94,215,0.08)}
+.feature h4{margin:.5rem 0;color:var(--secondary)}
+.feature.hovered, .feature:hover{transform:translateY(-16px) rotate(-1.6deg) scale(1.11);box-shadow:0 52px 130px rgba(11,94,215,0.18), inset 0 0 28px rgba(240,192,64,0.12), 0 0 36px rgba(240,192,64,0.12);filter:brightness(1.08);border-color:rgba(240,192,64,0.45)}
+.icon{width:40px;height:40px;color:var(--maroon)}
+
+.card-fade{opacity:0;transform:translateY(18px)}
+.card-fade.delay-1{transition-delay:.12s}
+.card-fade.delay-2{transition-delay:.24s}
+.card-fade.in{animation:fadeUp .7s cubic-bezier(.2,.9,.3,1) forwards}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+
+.services{padding:3rem 0}
+.service-card{background:linear-gradient(135deg, #ffffff 0%, rgba(11,94,215,0.018) 100%);padding:1.25rem;border-radius:14px;box-shadow:0 18px 46px rgba(0,0,0,0.08);transform-origin:center;transition:transform .45s cubic-bezier(.2,.9,.3,1),box-shadow .45s ease,filter .35s ease,border-color .45s ease;position:relative;overflow:hidden;border:1.2px solid rgba(11,94,215,0.09)}
+.service-card h4{color:var(--secondary)}
+.service-card.hovered, .service-card:hover{transform:translateY(-18px) rotate(-2deg) scale(1.13);box-shadow:0 60px 160px rgba(11,94,215,0.24), inset 0 0 32px rgba(240,192,64,0.16), 0 0 44px rgba(240,192,64,0.18);filter:brightness(1.1);border-color:rgba(240,192,64,0.52)}
+.service-tilt.delay-1{transition-delay:.08s}
+.service-tilt.delay-2{transition-delay:.16s}
+
+.site-footer{border-top:1px solid #eee;padding:2rem 0;color:var(--muted);text-align:center}
+
+@media (max-width:720px){
+  .header-inner{padding:0 1rem}
+  .hero{height:56vh}
+  .nav{display:none}
+  .container{padding:1rem}
+}
+
+/* Respect user's reduced motion preference */
+@media (prefers-reduced-motion: reduce){
+  .slide{transition:none !important}
+  .reveal, .card-fade, .animate-card, .card, .feature, .service-card, .spin-in {transition: none !important; animation: none !important;}
+  .card:hover, .feature:hover, .service-card:hover{transform:none;box-shadow:none}
+  /* turn gradient headings into solid color and stop animation */
+  #facilities h3, #services h3, #contact h3{animation:none;background:none;color:var(--secondary);-webkit-background-clip:none}
+}
