@@ -7,7 +7,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
     <script>
         tailwind.config = {
             theme: {
@@ -310,153 +312,193 @@
             </div>
         </div>
     </div>
-
+<body>
     <style>
-  /* Gallery Container - Matches your dark theme */
-  .gallery-section {
-    padding: 20px;
-    background-color: #0a0e17; /* Matches main bg */
-    font-family: sans-serif;
-  }
+body {
+        background-color: #0B0C15;
+        color: white;
+    }
 
-  .gallery-header {
-    color: white;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
+    .glass-card {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
 
-  /* Grid Layout */
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-  }
+    .gradient-text {
+        background: linear-gradient(90deg, #00f2ff, #bd00ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
 
-  /* Image Card Styling */
-  .gallery-card {
-    background-color: #111625; /* Matches card bg */
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s ease, border-color 0.3s ease;
-    height: 200px; /* Fixed height for uniformity */
-    position: relative;
-  }
+    .glow-divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #00f2ff, transparent);
+        opacity: 0.5;
+    }
 
-  /* Hover Effect - Matches the Cyan/Pink vibes */
-  .gallery-card:hover {
-    transform: translateY(-5px);
-    border-color: #00d4ff; /* Cyan accent */
-    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
-  }
+    .bg-grid {
+        background-size: 40px 40px;
+        mask-image: linear-gradient(to bottom, transparent, 5%, black, 95%, transparent);
+        -webkit-mask-image: linear-gradient(to bottom, transparent, 5%, black, 95%, transparent);
+    }
 
-  .gallery-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0; /* Hidden until loaded */
-    transition: opacity 0.5s ease;
-  }
+    /* --- 2. SWIPER GALLERY CUSTOMIZATION --- */
+    
+    /* Container spacing to allow 3D depth */
+    .swiper {
+        width: 100%;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
 
-  .gallery-card img.loaded {
-    opacity: 1;
-  }
+    /* THE CARD STYLE 
+       (Combines Glassmorphism + Dimensions + Hover Effects) */
+    .gallery-slide {
+        width: 500px;
+        height: 400px;
+        border-radius: 1rem; /* rounded-2xl */
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        /* Glass Effect Inherited from glass-card, plus specific transitions */
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
 
-  /* Loading State */
-  .loading-text {
-    color: #888;
-    text-align: center;
-    grid-column: 1 / -1;
-    padding: 20px;
-  }
-</style>
-</head>
-<body>
-<style>
-  /* Gallery Container - Matches your dark theme */
-  .gallery-section {
-    padding: 20px;
-    background-color: #0a0e17; /* Dark background */
-    font-family: sans-serif;
-  }
+    /* Hover State for the Card */
+    .gallery-slide:hover {
+        border-color: #00f2ff; /* stemCyan */
+        box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
+    }
 
-  .gallery-header {
-    color: white;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
+    /* Image Zoom on Hover */
+    .gallery-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
 
-  /* Grid Layout */
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-  }
+    .gallery-slide:hover img {
+        transform: scale(1.1);
+    }
 
-  /* Image Card Styling */
-  .gallery-card {
-    background-color: #111625; 
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s ease, border-color 0.3s ease;
-    height: 200px;
-  }
+    /* --- 3. SWIPER INTERNAL OVERRIDES --- */
 
-  /* Hover Effect */
-  .gallery-card:hover {
-    transform: translateY(-5px);
-    border-color: #00d4ff; /* Cyan accent */
-    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
-  }
+    /* Fix the dark overlay shadows to match your dark theme background */
+    .swiper-slide-shadow-left,
+    .swiper-slide-shadow-right {
+        background-image: none !important;
+        background-color: rgba(11, 12, 21, 0.8) !important; /* Matches stemDark */
+    }
 
-  .gallery-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-</style>
+    /* Pagination Dots - Customized to Stem Cyan */
+    .swiper-pagination-bullet {
+        background: #fff;
+        opacity: 0.3;
+        width: 10px;
+        height: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .swiper-pagination-bullet-active {
+        background: #00f2ff !important;
+        opacity: 1;
+        box-shadow: 0 0 10px rgba(0, 242, 255, 0.6);
+        transform: scale(1.2);
+    }
+    </style>
 </head>
 <body>
 
-<div class="gallery-section">
-  <h2 class="gallery-header">Gallery</h2>
-  <div class="gallery-grid" id="local-gallery"></div>
-</div>
-<script>
-  // 1. I typed out the filenames from your screenshot here
-  const imageFiles = [
-    "IMG_7717.JPG", "IMG_7811.JPG", "IMG_7839.JPG", "IMG_7841.JPG",
-    "IMG_7851.JPG", "IMG_7853.JPG", "IMG_7857.JPG", "IMG_7869.JPG",
-    "IMG_7873.JPG", "IMG_7879.JPG", "IMG_7893.JPG", "IMG_7907.JPG",
-    "IMG_7925.JPG", "IMG_7926.JPG", "IMG_7928.JPG", "IMG_7964.JPG",
-    "IMG_8028.JPG", "IMG_8035.JPG", "IMG_8038.JPG", "IMG_8042.JPG",
-    "IMG_8050.JPG", "IMG_8058.JPG", "IMG_8068.JPG"
-  ];
+    <section class="gallery-section">
 
-  // 2. This creates the HTML for each image automatically
-  const galleryContainer = document.getElementById('local-gallery');
-  const basePath = "/report/"; // The path you requested
+            <h2 class="text-3xl font-bold text-center mb-12">Gallery <span class="text-stemPurple">(12th December, 2025)</span></h2>
+           
+        
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
 
-  imageFiles.forEach(filename => {
-    // Create the card div
-    const card = document.createElement('div');
-    card.className = 'gallery-card';
+   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    // Create the image tag
-    const img = document.createElement('img');
-    img.src = basePath + filename; // Result: /report/img/IMG_7717.JPG
-    img.alt = "Event photo";
-    img.loading = "lazy"; // Good for performance
+    <script>
+        // --- HELPER: GENERATE IMAGES (Using your local path format) ---
+        const wrapper = document.querySelector('.swiper-wrapper');
+        for (let i = 1; i <= 23; i++) {
+            const slide = document.createElement('div');
+            slide.className = 'swiper-slide gallery-slide';
+            
+            // IMPORTANT: This uses the format you asked for.
+            // Ensure your images are named 1.JPG, 2.JPG, etc. inside that specific folder.
+            // If testing on a server, this specific "file:///" path might be blocked by security.
+            // If that happens, move the images to your project folder.
+slide.innerHTML = `<img src="Report pics/${i}.JPG" alt="Gallery Image ${i}" loading="lazy">`;            
+            // Fallback for testing (Uncomment below if your local images aren't showing yet)
+            // slide.innerHTML = `<img src="https://picsum.photos/300/400?random=${i}" alt="Random Image ${i}">`;
+            
+            wrapper.appendChild(slide);
+        }
+        // ------------------------------------------------
 
-    // Combine them and add to page
-    card.appendChild(img);
-    galleryContainer.appendChild(card);
-  });
-</script>
+        // --- SWIPER CONFIGURATION ---
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            initialSlide: 2,
+            loop: true,
+            speed: 800, // Animation speed (0.8 seconds)
+
+            // --- 1. AUTO SCROLL (AUTOPLAY) ---
+            autoplay: {
+                delay: 2000,                // Wais 2 seconds before moving to next slide
+                disableOnInteraction: false, // Keeps autoplaying even after you swipe manually
+                pauseOnMouseEnter: false,    // Set to 'true' if you want it to stop when hovering
+            },
+
+            // --- 2. MOUSEWHEEL SCROLLING ---
+            mousewheel: {
+                thresholdDelta: 70,
+                forceToAxis: true,
+            },
+
+            // --- 3. KEYBOARD ARROWS ---
+            keyboard: {
+                enabled: true,
+                onlyInViewport: true,
+            },
+            
+            // --- 3D EFFECT SETTINGS ---
+            coverflowEffect: {
+                rotate: 20,
+                stretch: 0,
+                depth: 350,
+                modifier: 1,
+                slideShadows: true,
+            },
+            
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    </script>
+
+
     <footer class="border-t border-white/10 bg-black py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="text-center md:text-left">
