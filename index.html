@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>STEM Summit | Joint Collaboration</title>
+    <title>GLOBAL STEM EDUCATION CENTRE</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -295,15 +295,15 @@
                 </div>
                 <div class="divider-x">|</div>
                 <div class="logo-text">
-                    <img src="" alt=""> Australian Catholic University
+                    <img src="ACU.png" style="width: 100px; height: 40px;" alt=""> Australian Catholic University
                 </div>
             </div>
             
             <nav class="nav">
-                <a href="#partners">Partners</a>
-                <a href="#about">About</a>
-                <a href="#facilities">Facilities</a>
-                <a href="#contact">Contact</a>
+                <a href="#partners">About Us</a>
+                <a href="#Vision-Mission">Vision and Mission</a>
+                <a href="#gallery">Gallery</a>
+                <a href="report.html">Reports</a>
             </nav>
         </div>
     </header>
@@ -333,7 +333,7 @@
         </div>
 
         <div class="hero-actions">
-            <a class="btn primary" href="#objectives">Explore Objectives</a>
+            <a class="btn primary" href="#objectives-section">Explore Objectives</a>
         </div>
     </div>
 </section>
@@ -354,7 +354,7 @@
                 <div class="card-glow"></div>
                 <div class="college-header">
                     <div class="college-logo-box">
-                        <i class="fa-solid fa-graduation-cap"></i>
+                        <img src="logo.png" style="width:100px" alt="">
                     </div>
                     <div class="college-titles">
                         <h4>CHRIST</h4>
@@ -384,8 +384,7 @@
                 <div class="card-glow"></div>
                 <div class="college-header">
                     <div class="college-logo-box">
-                        <i class="fa-solid fa-book-open"></i>
-                    </div>
+<img src="ACU.png" style="width: 100px;" alt="">                    </div>
                     <div class="college-titles">
                         <h4>ACU</h4>
                         <span>Australian Catholic University</span>
@@ -807,7 +806,7 @@
 </head>
 <body>
 
-  <section class="vm-section">
+  <section class="vm-section" id="Vision-Mission">
     <div class="vm-container">
       
       <div class="vm-row reveal-on-scroll">
@@ -856,7 +855,7 @@
     </div>
   </section>
 
-  <section class="objectives-section">
+  <section class="objectives-section" id="objectives-section">
     <div class="vm-container">
       
       <div class="vm-row reveal-on-scroll">
@@ -949,12 +948,12 @@
           </blockquote>
         </article>
       </div>
-    </div>
+    </div><br>
 
     <div class="vm-row reverse-layout reveal-on-scroll">
       <div class="leader-photo-col">
         <div class="photo-wrapper assoc-glow">
-          <img src="E299.jpg" alt="Associate Director Photo">
+          <img src="E299.jpg"  alt="Associate Director Photo">
         </div>
       </div>
 
@@ -966,6 +965,28 @@
           <hr class="divider">
           <blockquote class="leader-quote">
             "Education is the kindling of a flame, not the filling of a vessel. Our mission is to ignite curiosity and facilitate growth through hands-on experience."
+          </blockquote>
+        </article>
+      </div>
+    </div>
+    <br>
+
+
+    <div class="vm-row reveal-on-scroll">
+      <div class="leader-photo-col">
+        <div class="photo-wrapper assoc-prof-glow">
+          <img src="sindhu mam.png" alt="Director Photo">
+        </div>
+      </div>
+
+          <div class="leader-info-col">
+        <article class="vm-card leader-card">
+          <div class="glow" style="background: #051f92; top: -50px; right: -50px;"></div>
+          <h3 class="leader-name">DR. SINDU GEORGE</h3>
+          <p class="leader-role">Associate Professor</p>
+          <hr class="divider">
+          <blockquote class="leader-quote">
+            "The Beautiful thing about learning is that no one can take it away from you."
           </blockquote>
         </article>
       </div>
@@ -1017,7 +1038,7 @@
   /* Specific Glows for Photos */
   .director-glow { box-shadow: 0 20px 40px rgba(241, 196, 15, 0.2); border-color: rgba(241, 196, 15, 0.3); }
   .assoc-glow    { box-shadow: 0 20px 40px rgba(0, 242, 254, 0.2); border-color: rgba(0, 242, 254, 0.3); }
-
+  .assoc-prof-glow { box-shadow: 0 20px 40px rgba(5, 31, 146, 0.2); border-color: rgba(5, 31, 146, 0.3); }
   /* 2. INFO COLUMN */
   .leader-info-col {
     flex: 1.5; /* Slightly wider than photo */
@@ -1133,7 +1154,7 @@
 
     /* CHRIST Colors (Cyan) */
     .college-card.christ { border-left: 4px solid #00f2fe; }
-    .college-card.christ .college-logo-box { color: #00f2fe; background: rgba(0, 242, 254, 0.1); }
+    .college-card.christ .college-logo-box { color: #ffffff; background: rgba(255, 255, 255, 0.1); }
     .college-card.christ:hover { box-shadow: 0 10px 40px rgba(0, 242, 254, 0.2); border-color: #00f2fe; }
 
     /* ACU Colors (Purple/Pink) */
@@ -1145,7 +1166,7 @@
     .college-header { display: flex; align-items: center; gap: 20px; margin-bottom: 25px; }
     
     .college-logo-box {
-        width: 60px; height: 60px;
+        width: 100px; height: 60px;
         border-radius: 15px;
         display: flex; align-items: center; justify-content: center;
         font-size: 1.8rem;
