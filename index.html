@@ -12,16 +12,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- CSS VARIABLES & RESET --- */
+        /* --- CSS VARIABLES & RESET (LIGHT THEME) --- */
         :root {
-            --primary: #00f2fe;
+            /* Adjusted Primary for better visibility on white */
+            --primary: #00b4d8; 
             --secondary: #4facfe;
             --accent: #ff0055;
-            --dark-bg: #0a0e17;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --text-main: #ffffff;
-            --text-muted: #a0a0a0;
+            
+            /* Light Theme Backgrounds */
+            --dark-bg: #ffffff;
+            --card-bg: #ffffff;
+            --glass-border: rgba(0, 0, 0, 0.08); /* Darker border for light bg */
+            
+            /* High Contrast Text */
+            --text-main: #1e293b; /* Slate 800 */
+            --text-muted: #64748b; /* Slate 500 */
+            
             --font-heading: 'Outfit', sans-serif;
             --font-body: 'Inter', sans-serif;
         }
@@ -30,10 +36,10 @@
 
         body {
             background-color: var(--dark-bg);
-            /* Complex background gradient for depth */
+            /* Soft, subtle gradients for light theme depth */
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(79, 172, 254, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(255, 0, 85, 0.05) 0%, transparent 40%);
+                radial-gradient(circle at 10% 20%, rgba(79, 172, 254, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 85, 0.03) 0%, transparent 40%);
             color: var(--text-main);
             font-family: var(--font-body);
             line-height: 1.6;
@@ -52,8 +58,9 @@
             padding: 15px 0;
             z-index: 1000;
             backdrop-filter: blur(15px);
-            background: rgba(10, 14, 23, 0.85);
+            background: rgba(255, 255, 255, 0.85); /* White glass */
             border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
 
         .header-inner {
@@ -73,7 +80,7 @@
             font-family: var(--font-heading);
             font-weight: 700;
             font-size: 1.2rem;
-            color: #fff;
+            color: var(--text-main); /* Dark text */
             display: flex;
             align-items: center;
             gap: 10px;
@@ -113,7 +120,7 @@
             top: 0; left: 0; width: 100%; height: 100%;
             /* Placeholder abstract tech image */
             background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop') center/cover;
-            opacity: 0.3;
+            opacity: 0.08; /* Very faint on white */
             mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
             z-index: -1;
         }
@@ -123,7 +130,8 @@
             font-size: 4.5rem;
             line-height: 1.1;
             margin-bottom: 20px;
-            background: linear-gradient(to bottom, #fff, #aaa);
+            /* Dark gradient for text */
+            background: linear-gradient(to bottom, #1e293b, #64748b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -151,16 +159,16 @@
 
         .btn.primary {
             background: var(--primary);
-            color: #000;
-            box-shadow: 0 0 25px rgba(0, 242, 254, 0.3);
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(0, 180, 216, 0.2);
         }
         
-        .btn.primary:hover { box-shadow: 0 0 40px rgba(0, 242, 254, 0.6); transform: scale(1.05); }
+        .btn.primary:hover { box-shadow: 0 15px 35px rgba(0, 180, 216, 0.4); transform: scale(1.05); }
 
         /* --- COLLABORATION SECTION (NEW) --- */
         .collab-section {
             padding: 80px 0;
-            background: rgba(255,255,255,0.02);
+            background: #f8fafc; /* Very light slate bg */
             border-top: 1px solid var(--glass-border);
             border-bottom: 1px solid var(--glass-border);
         }
@@ -171,7 +179,7 @@
         }
         
         .collab-tag {
-            background: rgba(0, 242, 254, 0.1);
+            background: rgba(0, 180, 216, 0.1);
             color: var(--primary);
             padding: 5px 15px;
             border-radius: 20px;
@@ -190,26 +198,28 @@
         }
 
         .college-card {
-            background: var(--card-bg);
+            background: #ffffff;
             border: 1px solid var(--glass-border);
             padding: 40px;
             border-radius: 20px;
             text-align: center;
             transition: 0.4s;
             position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03); /* Soft shadow */
         }
 
         .college-card:hover {
             border-color: var(--primary);
-            background: rgba(255,255,255,0.05);
+            background: #ffffff;
             transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
 
         .college-logo-placeholder {
             width: 80px;
             height: 80px;
             margin: 0 auto 20px;
-            background: #fff;
+            background: #f1f5f9;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -240,7 +250,7 @@
         }
 
         /* --- CARDS & GRIDS --- */
-        .section-title { font-family: var(--font-heading); font-size: 2.5rem; text-align: center; margin-bottom: 1rem; }
+        .section-title { font-family: var(--font-heading); font-size: 2.5rem; text-align: center; margin-bottom: 1rem; color: var(--text-main); }
         
         .grid {
             display: grid;
@@ -250,16 +260,17 @@
         }
 
         .glass-card {
-            background: var(--card-bg);
+            background: #ffffff;
             border: 1px solid var(--glass-border);
             padding: 30px;
             border-radius: 15px;
             backdrop-filter: blur(10px);
             transition: 0.4s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
         
         .glass-card:hover { border-color: var(--secondary); transform: translateY(-5px); }
-        .glass-card h4 { font-family: var(--font-heading); font-size: 1.4rem; color: #fff; margin-bottom: 10px; }
+        .glass-card h4 { font-family: var(--font-heading); font-size: 1.4rem; color: var(--text-main); margin-bottom: 10px; }
         .glass-card p { color: var(--text-muted); font-size: 0.95rem; }
 
         /* --- FOOTER --- */
@@ -268,6 +279,7 @@
             text-align: center;
             border-top: 1px solid var(--glass-border);
             margin-top: 100px;
+            background: #ffffff;
         }
 
         /* --- ANIMATION --- */
@@ -275,40 +287,131 @@
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* Mobile */
+        @media (max-width: 900px) {
+          .container { padding: 0 8px; }
+          .header-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
+          .collab-logos { flex-direction: column; align-items: flex-start; gap: 5px; }
+          .logo-text img { width: 70px !important; height: auto !important; }
+          .logo-text { font-size: 1rem; }
+          .divider-x { display: none; }
+        }
         @media (max-width: 768px) {
-            .hero-title { font-size: 3rem; }
-            .collab-grid { grid-template-columns: 1fr; gap: 20px; }
-            .connector-line { display: none; }
-            .connector span { transform: rotate(90deg); display: block; margin: 10px 0; }
-            .nav { display: none; }
-            .collab-logos span { font-size: 0.8rem; }
+          .hero-title { font-size: 2.1rem; }
+          .collab-grid { grid-template-columns: 1fr; gap: 20px; }
+          .connector-line { display: none; }
+          .connector span { transform: rotate(90deg); display: block; margin: 10px 0; }
+          .nav1 { display: none; }
+          .collab-logos span { font-size: 0.8rem; }
+          .hero-logo-container img { width: 90vw !important; max-width: 350px !important; }
+          .college-card { padding: 18px; }
+          .glass-card { padding: 16px; }
+          .section-title { font-size: 1.5rem; }
+        }
+        @media (max-width: 480px) {
+          .hero-title { font-size: 1.3rem; }
+          .hero-sub { font-size: 1rem; }
+          .btn { padding: 10px 18px; font-size: 0.8rem; }
+        }
+
+        /* Hamburger menu styles */
+        .hamburger {
+          display: none;
+          flex-direction: column;
+          cursor: pointer;
+          width: 32px;
+          height: 32px;
+          justify-content: center;
+          align-items: center;
+        }
+        .hamburger span {
+          height: 4px;
+          width: 100%;
+          background: var(--primary);
+          margin: 3px 0;
+          border-radius: 2px;
+          transition: 0.3s;
+        }
+        @media (max-width: 768px) {
+          .hamburger { display: flex; }
+          .mobile-nav {
+            display: block;
+            position: absolute;
+            top: 60px;
+            right: 10px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            padding: 18px 24px;
+            z-index: 2000;
+          }
+          .mobile-nav a {
+            display: block;
+            margin: 12px 0;
+            color: var(--text-main);
+            font-size: 1.1rem;
+            font-weight: 600;
+          }
         }
     </style>
 </head>
 <body>
 
+
     <header>
-        <div class="container header-inner">
-            <div class="collab-logos">
-                <div class="logo-text">
-                    <img src="logo.png" style="width: 100px;" alt=""> CHRIST (Deemed to be University)
-                </div>
-                <div class="divider-x">|</div>
-                <div class="logo-text">
-                    <img src="ACU.png" style="width: 100px; height: 40px;" alt=""> Australian Catholic University
-                </div>
-            </div>
-            
-            <nav class="nav1">
-                <a href="#partners">About Us</a>
-                <a href="#Vision-Mission">Vision and Mission</a>
-                <a href="#gallery">Gallery</a>
-                <a href="report.html">Reports</a>
-            </nav>
+      <div class="container header-inner">
+        <div class="collab-logos">
+          <div class="logo-text">
+            <img src="logo.png" style="width: 100px;" alt="CHRIST (Deemed to be University) logo"> CHRIST (Deemed to be University)
+          </div>
+          <div class="divider-x">|</div>
+          <div class="logo-text">
+            <img src="ACU.png" style="width: 100px; height: 40px;" alt="Australian Catholic University logo"> Australian Catholic University
+          </div>
         </div>
+        <nav class="nav1" aria-label="Main navigation">
+          <a href="#partners">About Us</a>
+          <a href="#Vision-Mission">Vision and Mission</a>
+          <a href="#gallery">Gallery</a>
+          <a href="report.html">Reports</a>
+        </nav>
+        <div class="hamburger" id="hamburger" aria-label="Open navigation menu" tabindex="0" role="button" aria-controls="mobileNav" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <nav class="mobile-nav" id="mobileNav" style="display:none" aria-label="Mobile navigation">
+        <a href="#partners">About Us</a>
+        <a href="#Vision-Mission">Vision and Mission</a>
+        <a href="#gallery">Gallery</a>
+        <a href="report.html">Reports</a>
+      </nav>
     </header>
 
     <main>
+  <script>
+  // Hamburger menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', function() {
+    const isOpen = mobileNav.style.display === 'block';
+    mobileNav.style.display = isOpen ? 'none' : 'block';
+    hamburger.setAttribute('aria-expanded', !isOpen);
+  });
+  // Close mobile nav on link click
+  Array.from(mobileNav.querySelectorAll('a')).forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNav.style.display = 'none';
+      hamburger.setAttribute('aria-expanded', false);
+    });
+  });
+  // Keyboard accessibility
+  hamburger.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      hamburger.click();
+    }
+  });
+  </script>
 <section class="hero" id="home">
     <div class="hero-bg">
         <div class="hero-blob blob-1"></div>
@@ -321,11 +424,9 @@
             <i class="fa-solid fa-location-dot"></i> Bangalore Central Campus
         </div>
 
-        <h1 class="hero-title">
-            GLOBAL STEM <br>
-            <span class="highlight-text">EDUCATION CENTRE</span>
-        </h1>
-
+        <div class="hero-logo-container">
+            <img src="stem logo cropped.gif" style="width: 1200px; height: auto;" alt="Global STEM Education Centre Logo" class="hero-logo" >
+        </div> 
         <div class="hero-school-info">
             <p class="primary-dept">School of Education</p>
             <div class="separator-line"></div>
@@ -345,7 +446,7 @@
         <div class="collab-header reveal">
             <span class="collab-tag">International Alliance</span>
             <h3 class="section-title">Bridging Continents</h3>
-            <p style="color:var(--text-muted)">A historic partnership combining Indian excellence with Australian innovation.</p>
+            <p style="color:var(--text-muted)">A historic partnership combining Indian excellence with Australian innovation</p>
         </div>
 
         <div class="fusion-grid">
@@ -362,7 +463,7 @@
                     </div>
                 </div>
                 <div class="college-body">
-                    <p>A premier educational institution in India, known for its academic discipline, holistic education, and world-class infrastructure.</p>
+                    <p>A premier educational institution in India, known for its academic discipline, holistic education, and world-class infrastructure</p>
                     <ul class="feature-list">
                         <li><i class="fa-solid fa-check"></i> NAAC 'A+' Grade</li>
                         <li><i class="fa-solid fa-check"></i> 25,000+ Students</li>
@@ -391,7 +492,7 @@
                     </div>
                 </div>
                 <div class="college-body">
-                    <p>A publicly funded university in Australia, ranked in the top 2% of universities worldwide, focusing on impact and research.</p>
+                    <p>A publicly funded university in Australia, ranked in the top 2% of universities worldwide, focusing on impact and research</p>
                     <ul class="feature-list">
                         <li><i class="fa-solid fa-check"></i> Top 2% Globally</li>
                         <li><i class="fa-solid fa-check"></i> 7 Campuses</li>
@@ -425,7 +526,7 @@
     </div>
 </section>
 <style>
-/* --- HERO SECTION STYLES --- */
+/* --- HERO SECTION STYLES (LIGHT THEME) --- */
 
 .hero {
     position: relative;
@@ -436,9 +537,9 @@
     justify-content: center;
     text-align: center;
     overflow: hidden;
-    /* Dark Background Base */
-    background-color: #0b0f14; 
-    color: #fff;
+    /* Light Background Base */
+    background-color: #ffffff; 
+    color: var(--text-main);
     padding: 20px;
 }
 
@@ -454,7 +555,7 @@
     position: absolute;
     border-radius: 50%;
     filter: blur(80px);
-    opacity: 0.4;
+    opacity: 0.15; /* Reduced opacity for light theme */
 }
 
 .blob-1 {
@@ -496,19 +597,19 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: #f1f5f9; /* Light grey */
+    border: 1px solid rgba(0, 0, 0, 0.05);
     padding: 8px 16px;
     border-radius: 50px;
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #aebacf;
+    color: var(--text-muted);
     backdrop-filter: blur(5px);
 }
 
 .campus-badge i {
-    color: #00f2fe; /* Accent color for icon */
+    color: #00b4d8; /* Accent color for icon */
 }
 
 /* 2. Main Title */
@@ -523,10 +624,10 @@
 
 .hero-title .highlight-text {
     /* Gradient Text Effect */
-    background: linear-gradient(135deg, #ffffff 0%, #aebacf 100%);
+    background: linear-gradient(135deg, #1e293b 0%, #64748b 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    display: block; /* Puts it on a new line visually if needed */
+    display: block; 
 }
 
 /* 3. School Information */
@@ -540,7 +641,7 @@
 .primary-dept {
     font-size: 1.5rem;
     font-weight: 500;
-    color: #00f2fe; /* Cyan accent */
+    color: var(--primary); /* Cyan accent */
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -549,13 +650,13 @@
 .separator-line {
     width: 60px;
     height: 2px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.1);
     border-radius: 2px;
 }
 
 .secondary-school {
     font-size: 1.1rem;
-    color: #bfc7cf; /* Muted text */
+    color: var(--text-muted); /* Muted text */
     margin: 0;
     font-weight: 300;
 }
@@ -565,19 +666,19 @@
     margin-top: 20px;
     padding: 14px 36px;
     border-radius: 30px;
-    background: linear-gradient(90deg, #00f2fe, #3a7bd5);
+    background: linear-gradient(90deg, #00b4d8, #3a7bd5);
     color: #fff;
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
     border: none;
-    box-shadow: 0 10px 20px rgba(0, 242, 254, 0.3);
+    box-shadow: 0 10px 20px rgba(0, 180, 216, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn.primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(0, 242, 254, 0.4);
+    box-shadow: 0 15px 30px rgba(0, 180, 216, 0.4);
 }
 
 /* Mobile Responsiveness */
@@ -589,12 +690,12 @@
 }
 </style>
 <style>
-    /* --- 1. CSS VARIABLES --- */
+    /* --- 1. CSS VARIABLES (VM LIGHT) --- */
     :root {
-      --vm-bg: #0b0f14;
-      --vm-card-bg: rgba(255,255,255,0.04);
-      --vm-muted: #bfc7cf;
-      --vm-glass-border: rgba(255,255,255,0.06);
+      --vm-bg: #ffffff;
+      --vm-card-bg: #ffffff;
+      --vm-muted: #64748b;
+      --vm-glass-border: rgba(0,0,0,0.08);
       
       /* Gradients */
       --vision-accent: linear-gradient(135deg, #00f2fe 0%, #3a7bd5 100%);
@@ -611,7 +712,7 @@
       padding: 0;
       background-color: var(--vm-bg);
       font-family: 'Outfit', sans-serif;
-      color: #fff;
+      color: var(--text-main);
     }
     
     * { box-sizing: border-box; }
@@ -623,15 +724,15 @@
       position: relative;
     }
 
-    /* Distinct backgrounds for visual variety */
+    /* Distinct backgrounds for visual variety (Light) */
     .vm-section {
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(58,123,213,0.06), transparent 12%),
-                  radial-gradient(900px 400px at 95% 90%, rgba(255,0,85,0.04), transparent 12%);
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(58,123,213,0.03), transparent 12%),
+                  radial-gradient(900px 400px at 95% 90%, rgba(255,0,85,0.02), transparent 12%);
     }
 
     .objectives-section {
-      background: radial-gradient(1000px 500px at 90% 10%, rgba(161, 140, 209, 0.08), transparent 12%),
-                  radial-gradient(800px 400px at 10% 90%, rgba(58,123,213,0.04), transparent 12%);
+      background: radial-gradient(1000px 500px at 90% 10%, rgba(161, 140, 209, 0.04), transparent 12%),
+                  radial-gradient(800px 400px at 10% 90%, rgba(58,123,213,0.02), transparent 12%);
     }
 
     /* Container */
@@ -677,9 +778,10 @@
       font-size: 40px;
       color: #fff;
       margin-bottom: 20px;
-      background: rgba(255,255,255,0.03);
+      background: rgba(255,255,255,0.8);
       border: 1px solid var(--vm-glass-border);
       backdrop-filter: blur(5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
     }
 
     /* Specific Icon Themes */
@@ -692,9 +794,7 @@
       margin: 0;
       font-weight: 700;
       letter-spacing: -0.5px;
-      background: linear-gradient(to right, #fff, #aebacf);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--text-main);
     }
 
     /* --- 5. CARD COLUMN (Text Content) --- */
@@ -710,11 +810,13 @@
       border: 1px solid var(--vm-glass-border);
       backdrop-filter: blur(14px);
       transition: transform 0.3s ease, border-color 0.3s ease;
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
     }
 
     .vm-card:hover {
       transform: translateY(-5px);
-      border-color: rgba(255,255,255,0.15);
+      border-color: rgba(0,0,0,0.15);
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15);
     }
 
     .vm-card p {
@@ -731,7 +833,7 @@
       height: 200px;
       border-radius: 50%;
       filter: blur(70px);
-      opacity: 0.35;
+      opacity: 0.15; /* Reduced for light mode */
       pointer-events: none;
       z-index: -1;
     }
@@ -759,7 +861,7 @@
     }
 
     .mission-list li strong {
-      color: #fff;
+      color: var(--text-main);
       font-weight: 600;
     }
 
@@ -769,8 +871,8 @@
       width: 24px;
       height: 24px;
       border-radius: 6px;
-      background: rgba(255,255,255,0.1);
-      color: #fff;
+      background: rgba(0, 180, 216, 0.1);
+      color: var(--primary);
       font-size: 12px;
       flex-shrink: 0;
       margin-top: 3px;
@@ -821,7 +923,7 @@
           <article class="vm-card vision-card">
             <div class="glow"></div>
             <p>
-              Establishment of ACU-CHRIST University Global STEM Education Centre as a transnational hub
+              Establishment of the Global STEM Education Centre as a transnational hub
               for innovation and research collaboration — addressing systemic inequities and building
               workforce readiness through cross-disciplinary programs and sustainable transformation.
             </p>
@@ -872,31 +974,31 @@
             <ul class="mission-list">
               <li>
                 <span class="tick">✔</span> 
-                <span><strong>Enhance STEM participation</strong> through integrated learning in science, technology, engineering, arts, and math.</span>
+                <span><strong>Enhance STEM participation</strong> through integrated learning in science, technology, engineering, arts, and math</span>
               </li>
               <li>
                 <span class="tick">✔</span> 
-                <span><strong>Build capacity</strong> of in-service and preservice teachers to implement effective STEM strategies.</span>
+                <span><strong>Build capacity</strong> of in-service and preservice teachers to implement effective STEM strategies</span>
               </li>
               <li>
                 <span class="tick">✔</span> 
-                <span><strong>Create a self-sustaining centre</strong> integrating research, creativity, design, and digital literacy.</span>
+                <span><strong>Create a self-sustaining centre</strong> integrating research, creativity, design, and digital literacy</span>
               </li>
               <li>
                 <span class="tick">✔</span> 
-                <span><strong>Foster partnerships</strong> between university, schools, and community for long-term engagement.</span>
+                <span><strong>Foster partnerships</strong> between university, schools, and community for long-term engagement</span>
               </li>
               <li>
                 <span class="tick">✔</span> 
-                <span><strong>Academic Collaboration:</strong> Joint curriculum, research supervision, publications, and student exchange.</span>
+                <span><strong>Academic Collaboration:</strong> Joint curriculum, research supervision, publications, and student exchange</span>
               </li>
               <li>
                 <span class="tick">✔</span> 
-                <span><strong>Capacity Building:</strong> Teacher training, mentorship, joint certifications, and impact reporting.</span>
+                <span><strong>Capacity Building:</strong> Teacher training, mentorship, joint certifications, and impact reporting</span>
               </li>
               <li>
                 <span class="tick">✔</span> 
-                <span><strong>ACU-CU Collaboration:</strong> Co-designing governance, joint research projects, and shared resources.</span>
+                <span><strong>ACU-CU Collaboration:</strong> Co-designing governance, joint research projects, and shared resources</span>
               </li>
             </ul>
           </article>
@@ -953,7 +1055,7 @@
     <div class="vm-row reverse-layout reveal-on-scroll">
       <div class="leader-photo-col">
         <div class="photo-wrapper assoc-glow">
-          <img src="E299.jpg"  alt="Associate Director Photo">
+          <img src="Greta.png"   alt="Associate Director Photo">
         </div>
       </div>
 
@@ -996,12 +1098,11 @@
 </section>
 
 <style>
-  /* --- LEADERSHIP SPECIFIC STYLES --- */
+  /* --- LEADERSHIP SPECIFIC STYLES (LIGHT) --- */
 
   .leadership-section {
     /* Subtle background diff to separate it from Objectives */
-    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02), transparent 40%),
-                var(--vm-bg);
+    background: #fdfdfd;
     padding: 100px 20px;
   }
 
@@ -1023,6 +1124,7 @@
     border: 1px solid var(--vm-glass-border);
     transform: rotate(-3deg); /* Jaunty angle for style */
     transition: transform 0.4s ease, box-shadow 0.4s ease;
+    background: #fff;
   }
 
   .photo-wrapper img {
@@ -1037,8 +1139,8 @@
 
   /* Specific Glows for Photos */
   .director-glow { box-shadow: 0 20px 40px rgba(241, 196, 15, 0.2); border-color: rgba(241, 196, 15, 0.3); }
-  .assoc-glow    { box-shadow: 0 20px 40px rgba(0, 242, 254, 0.2); border-color: rgba(0, 242, 254, 0.3); }
-  .assoc-prof-glow { box-shadow: 0 20px 40px rgba(5, 31, 146, 0.2); border-color: rgba(5, 31, 146, 0.3); }
+  .assoc-glow    { box-shadow: 0 20px 40px rgba(0, 180, 216, 0.2); border-color: rgba(0, 180, 216, 0.3); }
+  .assoc-prof-glow { box-shadow: 0 20px 40px rgba(5, 31, 146, 0.1); border-color: rgba(5, 31, 146, 0.2); }
   /* 2. INFO COLUMN */
   .leader-info-col {
     flex: 1.5; /* Slightly wider than photo */
@@ -1048,13 +1150,13 @@
   .leader-name {
     font-size: 2rem;
     margin: 0 0 5px 0;
-    color: #fff;
+    color: var(--text-main);
     font-weight: 700;
   }
 
   .leader-role {
     font-size: 1.1rem;
-    color: var(--vm-muted);
+    color: var(--primary);
     text-transform: uppercase;
     letter-spacing: 2px;
     margin: 0;
@@ -1064,19 +1166,19 @@
   .divider {
     border: 0;
     height: 1px;
-    background: linear-gradient(90deg, rgba(255,255,255,0.2), transparent);
+    background: linear-gradient(90deg, #e2e8f0, transparent);
     margin: 20px 0;
   }
 
   .leader-quote {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #e0e0e0;
+    color: var(--text-muted);
     font-style: italic;
     margin: 0;
     position: relative;
     padding-left: 20px;
-    border-left: 3px solid rgba(255,255,255,0.3);
+    border-left: 3px solid var(--primary);
   }
 
   /* Responsive fixes */
@@ -1092,7 +1194,7 @@
     }
     
     .divider {
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
     }
     
     .leader-quote {
@@ -1104,13 +1206,13 @@
 
 
 <style>
-    /* --- PARTNERSHIP SECTION STYLES --- */
+    /* --- PARTNERSHIP SECTION STYLES (LIGHT) --- */
     .collab-section {
         padding: 100px 0;
         position: relative;
         overflow: hidden;
-        /* Deep background for contrast */
-        background: radial-gradient(circle at center, #1a1f2e 0%, #0a0e17 100%);
+        /* Clean white background */
+        background: #ffffff;
     }
 
     /* Abstract Background Lines */
@@ -1118,8 +1220,8 @@
         position: absolute;
         top: 0; left: 0; width: 100%; height: 100%;
         background-image: 
-            linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
         background-size: 50px 50px;
         opacity: 0.5;
         z-index: 0;
@@ -1141,8 +1243,8 @@
 
     /* --- COLLEGE CARDS ADVANCED --- */
     .college-card {
-        background: rgba(20, 25, 35, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: #ffffff;
+        border: 1px solid var(--glass-border);
         border-radius: 20px;
         padding: 40px;
         position: relative;
@@ -1154,13 +1256,13 @@
 
     /* CHRIST Colors (Cyan) */
     .college-card.CHRIST { border-left: 4px solid #00f2fe; }
-    .college-card.CHRIST .college-logo-box { color: #ffffff; background: rgba(255, 255, 255, 0.1); }
-    .college-card.CHRIST:hover { box-shadow: 0 10px 40px rgba(0, 242, 254, 0.2); border-color: #00f2fe; }
+    .college-card.CHRIST .college-logo-box { color: #ffffff; background: #f8fafc; }
+    .college-card.CHRIST:hover { box-shadow: 0 10px 40px rgba(0, 180, 216, 0.1); border-color: #00f2fe; }
 
     /* ACU Colors (Purple/Pink) */
     .college-card.acu { border-right: 4px solid #bd00ff; }
-    .college-card.acu .college-logo-box { color: #bd00ff; background: rgba(189, 0, 255, 0.1); }
-    .college-card.acu:hover { box-shadow: 0 10px 40px rgba(189, 0, 255, 0.2); border-color: #bd00ff; }
+    .college-card.acu .college-logo-box { color: #bd00ff; background: #f8fafc; }
+    .college-card.acu:hover { box-shadow: 0 10px 40px rgba(189, 0, 255, 0.1); border-color: #bd00ff; }
 
     /* Card Internal Layout */
     .college-header { display: flex; align-items: center; gap: 20px; margin-bottom: 25px; }
@@ -1172,18 +1274,19 @@
         font-size: 1.8rem;
     }
 
-    .college-titles h4 { font-family: var(--font-heading); font-size: 1.8rem; line-height: 1; }
+    .college-titles h4 { font-family: var(--font-heading); font-size: 1.8rem; line-height: 1; color: var(--text-main); }
     .college-titles span { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
 
-    .college-body p { color: #ccc; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
+    .college-body p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
 
     .feature-list { display: flex; gap: 15px; flex-wrap: wrap; }
     .feature-list li { 
         font-size: 0.8rem; 
-        background: rgba(255,255,255,0.05); 
+        background: #f1f5f9; 
         padding: 5px 12px; 
         border-radius: 50px; 
         display: flex; align-items: center; gap: 8px;
+        color: var(--text-muted);
     }
     .feature-list li i { font-size: 0.7rem; opacity: 0.7; }
 
@@ -1199,14 +1302,14 @@
     .core-ring {
         position: absolute;
         width: 80px; height: 80px;
-        border: 2px dashed rgba(255, 255, 255, 0.2);
+        border: 2px dashed rgba(0, 0, 0, 0.1);
         border-radius: 50%;
         animation: spin 10s linear infinite;
     }
 
     .core-ring.inner {
         width: 50px; height: 50px;
-        border: 2px solid rgba(255, 255, 255, 0.4);
+        border: 2px solid rgba(0, 0, 0, 0.2);
         border-left-color: transparent;
         border-right-color: transparent;
         animation: spin-reverse 4s linear infinite;
@@ -1214,9 +1317,9 @@
 
     .core-icon {
         font-size: 1.2rem;
-        color: #fff;
+        color: var(--text-main);
         z-index: 10;
-        text-shadow: 0 0 10px #fff;
+        text-shadow: none;
     }
 
     /* Beams connecting cards to core */
@@ -1229,11 +1332,11 @@
     }
     .connection-beam.left {
         right: 50%;
-        background: linear-gradient(to left, rgba(255,255,255,0.5), #00f2fe);
+        background: linear-gradient(to left, rgba(0,0,0,0.1), #00f2fe);
     }
     .connection-beam.right {
         left: 50%;
-        background: linear-gradient(to right, rgba(255,255,255,0.5), #bd00ff);
+        background: linear-gradient(to right, rgba(0,0,0,0.1), #bd00ff);
     }
 
     @keyframes spin { 100% { transform: rotate(360deg); } }
@@ -1242,8 +1345,8 @@
     /* --- INITIATIVES STRIP --- */
     .initiatives-strip {
         margin-top: 60px;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        background: #f8fafc;
+        border: 1px solid var(--glass-border);
         border-radius: 15px;
         padding: 30px;
         text-align: center;
@@ -1276,9 +1379,9 @@
     }
 
     .init-item i { font-size: 1.5rem; color: var(--text-main); transition: 0.3s; }
-    .init-item span { font-size: 0.9rem; font-weight: 500; }
+    .init-item span { font-size: 0.9rem; font-weight: 500; color: var(--text-main); }
     
-    .init-item:hover i { transform: translateY(-5px); color: var(--primary); text-shadow: 0 0 15px var(--primary); }
+    .init-item:hover i { transform: translateY(-5px); color: var(--primary); text-shadow: none; }
 
     /* --- MOBILE RESPONSIVE --- */
     @media (max-width: 900px) {
@@ -1289,36 +1392,12 @@
         
         .fusion-core { transform: rotate(90deg); } /* Vertical flow on mobile */
         
-        .college-card.CHRIST { border-left: 1px solid rgba(255,255,255,0.1); border-top: 4px solid #00f2fe; }
-        .college-card.acu { border-right: 1px solid rgba(255,255,255,0.1); border-bottom: 4px solid #bd00ff; }
+        .college-card.CHRIST { border-left: 1px solid rgba(0,0,0,0.1); border-top: 4px solid #00f2fe; }
+        .college-card.acu { border-right: 1px solid rgba(0,0,0,0.1); border-bottom: 4px solid #bd00ff; }
         
         .strip-grid { display: grid; grid-template-columns: 1fr 1fr; }
     }
 </style>
- <!--
-        <section id="about" class="container" style="padding: 100px 20px;">
-            <h3 class="section-title reveal">The Initiative</h3>
-            <div class="grid">
-                <article class="glass-card reveal">
-                    <i class="fa-solid fa-eye" style="color:var(--primary); font-size: 2rem; margin-bottom:15px;"></i>
-                    <h4>Shared Vision</h4>
-                    <p>To cultivate inclusive, research-driven learning environments that empower learners.</p>
-                </article>
-
-                <article class="glass-card reveal" style="transition-delay: 0.1s">
-                    <i class="fa-solid fa-rocket" style="color:var(--secondary); font-size: 2rem; margin-bottom:15px;"></i>
-                    <h4>Joint Mission</h4>
-                    <p>Provide open resources and community connections that support equitable STEM education.</p>
-                </article>
-
-                <article class="glass-card reveal" style="transition-delay: 0.2s">
-                    <i class="fa-solid fa-users" style="color:var(--accent); font-size: 2rem; margin-bottom:15px;"></i>
-                    <h4>Community</h4>
-                    <p>Connecting policymakers, librarians, and educators in a unified digital ecosystem.</p>
-                </article>
-            </div>
-        </section>
--->
 <section id="gallery" class="gallery-section">
     <div class="container header-container reveal">
         <span class="collab-tag">Campus & Innovation</span>
@@ -1334,301 +1413,122 @@
             
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('Inaugural/1.jpg');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Advanced Robotics Wing</h4>
-                        <p>CHRIST University Campus</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('Inaugural/2.jpg');"></div>
-                <div class="item-overlay acu-theme"> <div class="overlay-content">
-                        <h4>Quantum Computing Lab</h4>
-                        <p>ACU Research Facility</p>
-                    </div>
-                </div>
             </div>
 
              <div class="gallery-item">
                 <div class="item-image" style="background-image: url('Inaugural/3.jpg');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Collaborative Spaces</h4>
-                        <p>Student Innovation Hub</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('Inaugural/4.jpg');"></div>
-                <div class="item-overlay acu-theme">
-                    <div class="overlay-content">
-                        <h4>Bio-Tech Research</h4>
-                        <p>Global Health Initiative</p>
-                    </div>
-                </div>
             </div>
             
              <div class="gallery-item">
                 <div class="item-image" style="background-image: url('Inaugural/5.jpg');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('Inaugural/6.jpg');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('Inaugural/7.jpg');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/1.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/2.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/3.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/4.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/5.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/6.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/7.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/8.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/9.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/10.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/11.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/12.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/13.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/14.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/15.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/16.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/17.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/18.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/19.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/20.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/21.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/22.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             <div class="gallery-item">
                 <div class="item-image" style="background-image: url('ReportPics/23.JPG');"></div>
-                <div class="item-overlay">
-                    <div class="overlay-content">
-                        <h4>Annual STEM Summit</h4>
-                        <p>Connecting Minds</p>
-                    </div>
-                </div>
             </div>
 
             
@@ -1638,15 +1538,16 @@
 </section>
 
 <Style>
-	/* --- FUTURISTIC GALLERY STYLES --- */
+    /* --- FUTURISTIC GALLERY STYLES (LIGHT) --- */
 .gallery-section {
     padding: 100px 0;
     position: relative;
     overflow: hidden;
-    /* Subtle cyber-grid background */
+    /* Subtle grid background */
+    background-color: #fafbfc;
     background-image: 
-        linear-gradient(rgba(0, 242, 254, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
     background-size: 30px 30px;
 }
 
@@ -1696,8 +1597,9 @@
     flex-shrink: 0; /* Stops items from squishing */
     
     /* Futuristic Border & Base State */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: #0a0e17;
+    border: 1px solid var(--glass-border);
+    background: #ffffff;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
     
     /* 3D Transform setup */
     perspective: 1000px;
@@ -1723,8 +1625,8 @@
     transform: translateY(-15px) scale(1.02) rotateX(5deg);
     /* Neon Glow Shadow */
     box-shadow: 
-        0 15px 30px rgba(0, 0, 0, 0.5),
-        0 0 20px rgba(0, 242, 254, 0.3); /* Cyan glow */
+        0 20px 40px rgba(0, 0, 0, 0.1),
+        0 0 20px rgba(0, 180, 216, 0.15); /* Cyan glow */
     border-color: var(--primary);
     z-index: 10;
 }
@@ -1738,7 +1640,7 @@
     position: absolute;
     bottom: 0; left: 0; width: 100%;
     padding: 30px;
-    background: linear-gradient(to top, rgba(10, 14, 23, 0.9), transparent);
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.9), transparent);
     border-bottom: 3px solid var(--primary); /* Cyan underline */
     transform: translateY(20px);
     opacity: 0;
@@ -1750,7 +1652,7 @@
     border-color: var(--accent); /* Purple underline */
 }
 .gallery-item:hover .item-overlay.acu-theme {
-   text-shadow: 0 0 10px rgba(189, 0, 255, 0.5);
+   text-shadow: none;
 }
 
 
@@ -1763,7 +1665,7 @@
     font-family: var(--font-heading);
     font-size: 1.3rem;
     margin-bottom: 5px;
-    color: #fff;
+    color: var(--text-main);
 }
 .overlay-content p {
     color: var(--text-muted);
