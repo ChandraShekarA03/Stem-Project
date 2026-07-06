@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-outfit), sans-serif;
+  }
+  .glass {
+    @apply bg-white/60 backdrop-blur-2xl border border-slate-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)];
+  }
+  .glass-card {
+    @apply bg-white border border-slate-200/50 rounded-3xl p-8 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-500;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+  }
+  .bg-grid-pattern {
+    background-image: linear-gradient(to right, theme('colors.slate.200') 1px, transparent 1px),
+                      linear-gradient(to bottom, theme('colors.slate.200') 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  }
+}
