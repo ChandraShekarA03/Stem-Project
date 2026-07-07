@@ -37,55 +37,54 @@ export default function Navbar() {
           }`}
       >
         {/* Left Side */}
-        <div className="flex items-center gap-6 w-auto lg:w-1/3">
-          <div className="flex items-center gap-5 bg-white/50 backdrop-blur-md rounded-full px-5 py-3 border border-slate-200/50">
-            <Image src="/logo.webp" alt="CHRIST University" width={140} height={55} className="object-contain" priority />
-            <div className="w-[1px] h-8 bg-slate-300"></div>
-            <Image src="/ACU.webp" alt="Australian Catholic University" width={140} height={55} className="object-contain" priority />
+        <div className="flex-1 flex items-center justify-start shrink-0 z-10">
+          <div className="flex items-center gap-2 lg:gap-4 bg-white/50 backdrop-blur-md rounded-full px-2 lg:px-4 py-2 border border-slate-200/50">
+            <Image src="/logo.webp" alt="CHRIST University" width={140} height={55} className="object-contain w-20 lg:w-[120px] h-auto" priority />
+            <div className="w-[1px] h-6 lg:h-8 bg-slate-300"></div>
+            <Image src="/ACU.webp" alt="Australian Catholic University" width={140} height={55} className="object-contain w-20 lg:w-[120px] h-auto" priority />
           </div>
         </div>
 
-        {/* Center Nav with Large STEM Logo */}
-        <div className="hidden md:flex items-center justify-center gap-4 w-auto lg:w-1/3">
-          <nav className="bg-white/60 rounded-full px-3 py-1.5 border border-slate-200/50 backdrop-blur-md shadow-sm">
-            <Link
-              href="#alliance"
-              className="relative px-5 py-2 font-medium text-sm text-slate-700 hover:text-primary transition-colors group rounded-full hover:bg-white/50 inline-block"
-            >
-              International Collaboration
-            </Link>
-          </nav>
-
-          {/* Extremely large STEM Logo in the middle */}
-          <Link href="#home" className="relative block w-24 h-24 md:w-40 md:h-40 hover:scale-105 transition-transform flex-shrink-0 z-20 -my-16">
-            <Image src="/stem logo.webp" alt="STEM Logo" fill className="object-contain drop-shadow-xl" priority />
+        {/* Center STEM Logo */}
+        <div className="hidden lg:flex items-center justify-center shrink-0 z-10 transition-all duration-500 px-4">
+          <Link href="#home" className={`relative flex items-center justify-center hover:scale-105 transition-all duration-500 bg-white/50 backdrop-blur-md rounded-full border border-slate-200/50 shadow-sm ${scrolled ? 'px-3 lg:px-5 py-2' : 'px-4 lg:px-8 py-3'}`}>
+            <Image 
+              src="/stem logo.webp" 
+              alt="STEM Logo" 
+              width={300} 
+              height={100} 
+              className={`object-contain w-auto transition-all duration-500 ${scrolled ? 'h-[40px] lg:h-[55px]' : 'h-[60px] lg:h-[90px]'}`} 
+              priority 
+            />
           </Link>
+        </div>
 
-          <nav className="bg-white/60 rounded-full px-3 py-1.5 border border-slate-200/50 backdrop-blur-md shadow-sm flex items-center gap-1">
+        {/* Right Nav */}
+        <div className="flex-1 hidden lg:flex items-center justify-end shrink-0 z-10">
+          <nav className="bg-white/60 rounded-full px-2 lg:px-3 py-1.5 border border-slate-200/50 backdrop-blur-md shadow-sm flex items-center gap-1 text-center">
             <Link
               href="#leadership"
-              className="relative px-5 py-2 font-medium text-sm text-slate-700 hover:text-primary transition-colors group rounded-full hover:bg-white/50 inline-block"
+              className="relative px-2 lg:px-4 py-2 font-medium text-sm text-slate-700 hover:text-primary transition-colors group rounded-full hover:bg-white/50 inline-block"
             >
               Leadership
             </Link>
             <Link
               href="/reports"
-              className="relative px-5 py-2 font-medium text-sm text-slate-700 hover:text-primary transition-colors group rounded-full hover:bg-white/50 inline-block"
+              className="relative px-2 lg:px-4 py-2 font-medium text-sm text-slate-700 hover:text-primary transition-colors group rounded-full hover:bg-white/50 inline-block"
             >
               Reports
+            </Link>
+            <Link
+              href="#alliance"
+              className="relative px-2 lg:px-4 py-2 font-medium text-sm text-slate-700 hover:text-primary transition-colors group rounded-full hover:bg-white/50 inline-block whitespace-nowrap"
+            >
+              International Collaboration
             </Link>
           </nav>
         </div>
 
-        {/* Right Side */}
-        <div className="hidden md:flex justify-end w-auto lg:w-1/3">
-          <Link href="#contact" className="px-6 py-2.5 rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary hover:text-white transition-all duration-300 font-medium text-sm shadow-[0_0_15px_rgba(37,99,235,0.15)] hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]">
-            Partner With Us
-          </Link>
-        </div>
-
         <button
-          className="md:hidden text-foreground p-2 rounded-full hover:bg-white/10 transition-colors"
+          className="lg:hidden text-foreground p-2 rounded-full hover:bg-white/10 transition-colors z-10"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -98,7 +97,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className="absolute top-[80px] left-4 right-4 glass border border-white/10 rounded-3xl p-6 flex flex-col gap-4 md:hidden shadow-2xl"
+            className="absolute top-[80px] left-4 right-4 glass border border-white/10 rounded-3xl p-6 flex flex-col gap-4 lg:hidden shadow-2xl"
           >
             {navLinks.map((item, i) => (
               <Link
@@ -110,9 +109,6 @@ export default function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <Link href="#contact" onClick={() => setIsOpen(false)} className="mt-4 text-center px-6 py-3 rounded-full bg-primary text-white font-medium shadow-[0_0_20px_rgba(37,99,235,0.3)]">
-              Partner With Us
-            </Link>
           </motion.nav>
         )}
       </AnimatePresence>

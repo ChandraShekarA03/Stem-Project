@@ -27,19 +27,20 @@ export default function HeroSection() {
   };
 
   return (
-    <section ref={containerRef} id="home" className="relative h-[100svh] flex items-center justify-center overflow-hidden bg-background">
+    <section ref={containerRef} id="home" className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-background pt-32 pb-40">
       
       {/* High-Performance Hardware Accelerated Parallax */}
       <motion.div 
         style={{ y, willChange: "transform" }} 
         className="absolute inset-0 z-0 w-full h-full transform-gpu"
       >
-        <Image 
-          src="/stem_hero_light.png" 
-          alt="Scientific Data Visualization" 
-          fill 
-          className="object-cover opacity-100" 
-          priority
+        <video 
+          src="/STEM_hero_background.mp4" 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="absolute inset-0 w-full h-full object-cover opacity-100 scale-[1.4] md:scale-[1.35]"
         />
         {/* Subtle overlay gradient to blend with the next section at the very bottom */}
         <div className="absolute inset-0 bg-gradient-to-t from-white via-white/5 to-transparent"></div>
